@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.ExerciseMapper">
+
+    <sql id="ExSql">
+        <if test="ex.topic!=null and ex.topic!=''">
+            AND topic LIKE concat('%',#{ex.topic},'%')
+        </if>
+    </sql>
+
+
+    <select id="findSum" resultType="Integer">
+        SELECT COUNT(*) FROM `exercise`
+        <where>
+            <include refid="ExSql"></include>
+        </where>
+    </select>
+
+    <select id="findEx" parameterType="Integer" resultType="xaau.xcj.Curriculum.resource.management.entity.Exercise">
+        SELECT * FROM `exercise`
+        <where>
+            <include refid="ExSql"></include>
+        </where>
+        LIMIT #{ns},#{ps}
+    </select>
+
+    <update id="updataTest" parameterType="xaau.xcj.Curriculum.resource.management.entity.Exercise">
+        UPDATE `exercise`
+        <set>
+            <if test="ex.topic!=null and ex.topic!=''">
+                topic=#{ex.topic},
+            </if>
+            <if test="ex.optionA!=null and ex.optionA!=''">
+                optionA=#{ex.optionA},
+            </if>
+            <if test="ex.optionB!=null and ex.optionB!=''">
+                optionB=#{ex.optionB},
+            </if>
+            <if test="ex.optionC!=null and ex.optionC!=''">
+                optionC=#{ex.optionC},
+            </if>
+            <if test="ex.optionD!=null and ex.optionD!=''">
+                optionD=#{ac.optionD},
+            </if>
+            <if test="ex.result!=null and ex.result!=''">
+                result=#{ex.result},
+            </if>
+        </set>
+        where id=#{ex.id}
+    </update>
+</mapper>

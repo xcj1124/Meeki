@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.BoardMapper">
+
+
+    <resultMap type="Board" id="CaseMap">
+        <result column="id" property="id" />
+        <result column="consumeMsg" property="consumeMsg" />
+        <result column="newtime" property="newtime" />
+        <collection property="user" ofType="User">
+            <result column="name" property="name" />
+            <result column="img" property="img" />
+        </collection>
+    </resultMap>
+
+    <!-- 查询总留言数 -->
+    <select id="allConsumeNum" resultType="Integer">
+        SELECT COUNT(*) FROM
+       board;
+    </select>
+
+    <!-- 分列查询 -->
+    <select id="findConsumeToNum" resultMap="CaseMap">
+        SELECT * FROM board,user
+        where board.User_id=User.id
+        LIMIT #{ns},#{ps};
+    </select>
+
+    <!-- 添加留言 -->
+    <insert id="addConsume" parameterType="board">
+        INSERT INTO
+        board(User_ID,consumeMsg,newtime)
+        VALUE(#{board.User_Id},#{board.consumeMsg},#{board.newtime});
+    </insert>
+
+</mapper>

@@ -1,0 +1,64 @@
+/* 登陆界面背景 */
+body {
+	background: url("/static/image/login1.png") no-repeat;
+}
+
+h1 {
+	color: pink;
+}
+
+
+#header {
+	margin: 5% 0% 0% 41%;
+}
+/* 表单div */
+#logindiv {
+	background-color:white;
+	text-align: center;
+	width: 360px;
+	height: 260px;
+	margin: 3% 0% 0% 35%;
+	padding: 30px;
+	border: 1px solid beige;
+}
+
+#foot {
+	/*   表单div脚部*/
+	margin: 10% 0% 0% 40%;
+}
+
+/* 底部 */
+#footer {
+	padding: 5% 0% 0% 40%;
+}
+
+/* 提交按钮样式 */
+#userSubmit {
+	font-size: 20px;
+	border-radius: 6px;
+	width: 360px;
+	height: 40px;
+	background-color: grey;
+}
+
+span {
+	color: red;
+	font-size: 15px;
+	text-align: left;
+}
+
+/* 账号文本框样式 */
+#User_ID {
+	width: 260px;
+	height: 26px;
+}
+
+/* 密码文本框样式 */
+#Pwd {
+	width: 260px;
+	height: 26px;
+}
+
+#sb { /*取消超链接下划线*/
+	text-decoration: none;
+}

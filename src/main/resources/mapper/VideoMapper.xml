@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.VideoMapper">
+
+    <update id="updateVid" parameterType="xaau.xcj.Curriculum.resource.management.entity.CoureseMsg">
+        UPDATE coursemsg
+        <set>
+            <if test="cou.name!=null and cou.name!=''">
+                name=#{cou.name},
+            </if>
+            <if test="cou.message!=null and cou.message!=''">
+                message=#{cou.message},
+            </if>
+        </set>
+        where id=#{cou.id}
+    </update>
+</mapper>

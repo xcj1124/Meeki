@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.PlanMapper">
+
+    <sql id="PlanSql">
+        <if test="plan.id!=null and plan.id!=''">
+            AND id LIKE concat('%',#{plan.id},'%')
+        </if>
+        <if test="plan.name!=null and plan.name!=''">
+            AND name LIKE concat('%',#{plan.name},'%')
+        </if>
+        <if test="plan.msg!=null and plan.msg!=''">
+            AND msg LIKE concat('%',#{plan.msg},'%')
+        </if>
+    </sql>
+
+
+    <select id="sumPlan" resultType="Integer">
+        SELECT COUNT(*) FROM `plan`
+        <where>
+            <include refid="PlanSql"></include>
+        </where>
+    </select>
+    <select id="findPlan" parameterType="Integer" resultType="xaau.xcj.Curriculum.resource.management.entity.Plan">
+        SELECT * FROM `plan`
+        <where>
+            <include refid="PlanSql"></include>
+        </where>
+        LIMIT #{ns},#{ps}
+    </select>
+
+    <update id="updatePlan" parameterType="xaau.xcj.Curriculum.resource.management.entity.Plan">
+        update `plan`
+        <set>
+            <if test="p.name!=null and p.name!=''">
+                name=#{p.name},
+            </if>
+            <if test="p.teaName!=null and p.teaName!=''">
+                name=#{p.teaName},
+            </if>
+            <if test="p.time!=null and p.time!=''">
+                name=#{p.time},
+            </if>
+            <if test="p.msg!=null and p.msg!=''">
+                name=#{p.msg},
+            </if>
+        </set>
+        where id=#{p.id}
+    </update>
+</mapper>

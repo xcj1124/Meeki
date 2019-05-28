@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>案例</title>
+    <link rel="stylesheet" type="text/css" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/system.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script src="/static/js/jquery-1.12.2.js"></script>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/artTemplate/template-native.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/case.js"></script>
+</head>
+<body>
+<div class="system">
+    <div class="aside">
+        <div class="profile">
+            <div class="avatar img-circle">
+                <a href="/index.html"><img
+                        th:src="${session.user.img}"></a>
+            </div>
+            <h4><span th:text="${session.user.name}"></span></h4>
+        </div>
+        <div class="navs">
+            <ul class="list-unstyled">
+                <li class="active"><a
+                        href="/coureseMsg.html"> <i
+                        class="fa fa-user"></i> 课程简介
+                </a></li>
+                <li><a href="javascript:;"> <i class="fa fa-bars"></i>
+                    课程资源 <i class="fa fa-angle-right"></i>
+                </a>
+                    <ul class="list-unstyled">
+                        <li><a
+                                href="/video.html">视频</a></li>
+                        <li><a href="/case.html">案例</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="coursePlan.html"> <i
+                        class="fa fa-product-hunt"></i> 课程教案
+                </a></li>
+                <li>
+                    <a href="/testExercise.html"> <i
+                            class="fa fa-product-hunt"></i> 测试练习
+                    </a>
+                </li>
+                <li><a
+                        href="/teacherTeam.html">
+                    <i class="fa fa-user"></i> 教师团队
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <nav class="navbar navbar-custom">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>身份：<span th:text="${session.type}" style="color: blue"></span></li>
+                    <li><a href="/logOut"
+                           class="login_out_bot"> <i class="fa fa-sign-out"></i>退出&emsp;&emsp;
+                    </a></li>
+                </ul>
+                <div class="mydivh1">
+                    <h3>習題案例</h3>
+                </div>
+            </nav>
+        </div>
+        <div class="findTolike">
+            <form action="/case.html"
+                  method="get">
+                高级查询&emsp;&emsp; 关键字：<input id="vip_id" name="topic" type="text">&emsp;<a><input
+                    type="submit" id="selectVIPG" value="查询"></a>&emsp;
+            </form>
+            &emsp;
+        </div>
+        <div class="body" style="height: 450px; width: 1100px">
+
+            <div >
+                <!-- <table class="table table-bordered" id="user-box">
+                 ffff
+                 </table>-->
+                <div th:each="cose,cs:${cose}" th:class="${cs.odd}?'odd':'even'">
+                    <span th:text="${cs.count}"></span>.<span th:text="${cose.topic}"></span>&emsp;&emsp;<span class="correctAnser" th:text="${cose.correctAnser}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;
+
+                    <br>
+                    &emsp;&emsp;A:<span th:text="${cose.optionA}"></span>
+                    &emsp;&emsp;B:<span th:text="${cose.optionB}"></span>
+                    &emsp;&emsp;C:<span th:text="${cose.optionC}"></span>
+                    &emsp;&emsp;D:<span th:text="${cose.optionD}"></span>
+                    <br><br>
+                </div>
+
+                <div class="floot">共 <span th:text="${pg.tp}"></span>页
+                    第<span th:text="${pg.cp}"></span>页
+                    <span><a th:href="@{${pg.url}+'&cp=1'}">首頁</a></span>
+                    <span th:if="${pg.cp}>1">
+                        <a th:href="@{${pg.url}+'&cp='+${pg.cp-1}}">上一页</a>
+                    </span>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp-3}}">
+                        <span th:if="${pg.cp-3>=1}" th:text="${pg.cp-3}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp-2}}">
+                        <span th:if="${pg.cp-2>=1}" th:text="${pg.cp-2}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp-1}}">
+                        <span th:if="${pg.cp-1>=1}" th:text="${pg.cp-1}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp}}">
+                        <span th:if="${pg.cp>=1}" th:text="${pg.cp}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp+1}}">
+                        <span th:if="${pg.cp+1<=pg.tp}" th:text="${pg.cp+1}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp+2}}">
+                        <span th:if="${pg.cp+2<=pg.tp}" th:text="${pg.cp+2}"></span>
+                    </a>
+                    <a th:href="@{${pg.url}+'&cp='+${pg.cp+3}}">
+                        <span th:if="${pg.cp+3<=pg.tp}" th:text="${pg.cp+3}"></span>
+                    </a>
+
+                    <span th:if="${pg.cp<pg.tp}">
+                        <a th:href="@{${pg.url}+'&cp='+${pg.cp+1}}">下一页</a>
+                    </span>
+                    <span>
+                        <a th:href="@{${pg.url}+'&cp='+${pg.tp}}">末頁</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+
+
+</body>
+</html>

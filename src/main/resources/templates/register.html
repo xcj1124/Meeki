@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="/static/js/jquery-1.12.2.js"></script>
+    <script src="/static/js/reg.js"></script>
+    <link href="/static/css/register.css" rel="stylesheet"/>
+    <title>用户注册</title>
+</head>
+<body>
+<div class="header">
+    <h1>Please fill in the following information</h1>
+</div>
+<div class="w3-main">
+    <!-- Main -->
+    <div class="about-bottom main-agile book-form">
+        <div class="alert-close"></div>
+        <h2 class="tittle">Register Here</h2>
+        <form action="" id="regform" method="post">
+            <div class="form-date-w3-agileits">
+                <label>ID<span class="spanid" style="color: red; font-size: 20px"></span></label> <input
+                    type="text"
+                    id="User_ID" name="id" placeholder="Your id">
+                <label>PASSWORD&emsp;&emsp;<span class="spanpwd"
+                                                 style="color: red; font-size: 20px"></span></label><input
+                    type="password" id="Pwd" name="password" placeholder="Your password">
+                <label>Confirm Password&emsp;<span class="spanpwds"
+                                                   style="color: red; font-size: 20px"></span>
+                </label><input
+                    type="password"
+                    id="Pwds"  placeholder="Confirm Password">
+                <label>NAME&emsp;&emsp;&emsp;&emsp;<span
+                        class="spantel" style="color: red; font-size: 20px"></span>
+                </label><input
+                    type="text" id="name" name="name" placeholder="Your name">
+                <label>PHONE&emsp;&emsp;&emsp;&emsp;<span
+                        class="spantel" style="color: red; font-size: 20px"></span>
+                </label><input
+                    type="text" id="Tel" name="phono" placeholder="Your phone">
+
+            </div>
+            <div class="make wow shake">
+                <input type="button" id="register" value="register"
+                > <a href="/login.html"><input
+                    type="button" value="return"></a>
+            </div>
+        </form>
+    </div>
+    <div class="footer-w3l">
+        <p>
+            &copy; 2018 Meeki | Design by <a
+                href="https://user.qzone.qq.com/774894816">Meeki </a>
+        </p>
+    </div>
+</body>
+</html>

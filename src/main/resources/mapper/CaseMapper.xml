@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.CaseMapper">
+
+    <sql id="CaseSql">
+        <if test="cases.topic!=null and cases.topic!=''">
+            AND topic LIKE concat('%',#{cases.topic},'%')
+        </if>
+
+    </sql>
+
+
+    <select id="caseSum" resultType="Integer">
+        SELECT COUNT(*) FROM `case`
+        <where>
+            <include refid="CaseSql"></include>
+        </where>
+    </select>
+    <select id="findCase" resultType="xaau.xcj.Curriculum.resource.management.entity.Case">
+        SELECT * FROM `case`
+        <where>
+            <include refid="CaseSql"></include>
+        </where>
+        LIMIT #{ns},#{ps}
+    </select>
+
+    <select id="findCaseToId" resultType="xaau.xcj.Curriculum.resource.management.entity.Case">
+        SELECT * from `case` where id=#{id}
+    </select>
+
+    <update id="updateCase" parameterType="xaau.xcj.Curriculum.resource.management.entity.Case">
+        UPDATE `case`
+        <set>
+            <if test="ac.topic!=null and ac.topic!=''">
+                topic=#{ac.topic},
+            </if>
+            <if test="ac.optionA!=null and ac.optionA!=''">
+                optionA=#{ac.optionA},
+            </if>
+            <if test="ac.optionB!=null and ac.optionB!=''">
+                optionB=#{ac.optionB},
+            </if>
+            <if test="ac.optionC!=null and ac.optionC!=''">
+                optionC=#{ac.optionC},
+            </if>
+            <if test="ac.optionD!=null and ac.optionD!=''">
+                optionD=#{ac.optionD},
+            </if>
+            <if test="ac.correctAnser!=null and ac.correctAnser!=''">
+                correctAnser=#{ac.correctAnser},
+            </if>
+        </set>
+            where id=#{ac.id}
+    </update>
+</mapper>

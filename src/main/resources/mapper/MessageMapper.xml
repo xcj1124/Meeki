@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.MessageMapper">
+
+    <sql id="MsgSql">
+        <if test="message.name!=null and message.name!=''">
+            AND name LIKE concat('%',#{message.name},'%')
+        </if>
+
+    </sql>
+
+
+    <select id="totalMsg" resultType="Integer">
+        SELECT COUNT(*) FROM `message`
+        <where>
+            <include refid="MsgSql"></include>
+        </where>
+    </select>
+    <select id="findMessage" resultType="xaau.xcj.Curriculum.resource.management.entity.Message">
+        SELECT * FROM `message`
+        <where>
+            <include refid="MsgSql"></include>
+        </where>
+        LIMIT #{ns},#{ps}
+    </select>
+
+    <select id="findMes" resultType="xaau.xcj.Curriculum.resource.management.entity.Message">
+        SELECT * FROM `message`
+        where id=#{id}
+    </select>
+
+    <update id="updateMes" parameterType="xaau.xcj.Curriculum.resource.management.entity.Message">
+        update `message`
+        <set>
+            <if test="ms.name!=null and ms.name!=''">
+                name=#{ms.name},
+            </if>
+            <if test="ms.teaName!=null and ms.teaName!=''">
+                teaName=#{ms.teaName},
+            </if>
+            <if test="ms.time!=null and ms.time!=''">
+                time=#{ms.time},
+            </if>
+            <if test="ms.msg!=null and ms.msg!=''">
+                name=#{ms.msg},
+            </if>
+            <if test="ms.zhangjie!=null and ms.zhangjie!=''">
+                name=#{ms.zhangjie},
+            </if>
+        </set>
+        where id=#{ms.id}
+    </update>
+</mapper>

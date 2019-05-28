@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.UserMapper">
+
+
+    <insert id="updataUser" parameterType="xaau.xcj.Curriculum.resource.management.entity.User">
+        update user
+        <set>
+            <if test="user.name!=null and user.name!=''">
+                name=#{user.name},
+            </if>
+            <if test="user.phono!=null and user.phono!=''">
+                phono=#{user.phono},
+            </if>
+        </set>
+        where id=#{id}
+    </insert>
+
+
+    <update id="updateImage" parameterType="String">
+        UPDATE user
+        <set>
+            <if test="imgUrl!=null and imgUrl!=''">
+                phono=#{imgUrl},
+            </if>
+        </set>
+        where User_ID=#{id}
+    </update>
+
+</mapper>

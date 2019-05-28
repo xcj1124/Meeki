@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>课程教案</title>
+    <link rel="stylesheet" type="text/css" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/system.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script src="/static/js/jquery-1.12.2.js"></script>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/artTemplate/template-native.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/user.js"></script>
+</head>
+<body>
+<div class="system">
+    <div class="aside">
+        <div class="profile">
+            <div class="avatar img-circle">
+                <a href="/index.html"><img
+                        th:src="${session.user.img}"></a>
+            </div>
+            <h4><span th:text="${session.user.name}"></span></h4>
+        </div>
+        <div class="navs">
+            <ul class="list-unstyled">
+                <li class="active"><a
+                        href="/coureseMsg.html"> <i
+                        class="fa fa-user"></i> 课程简介
+                </a></li>
+                <li><a href="javascript:;"> <i class="fa fa-bars"></i>
+                    课程资源 <i class="fa fa-angle-right"></i>
+                </a>
+                    <ul class="list-unstyled">
+                        <li><a
+                                href="/video.html">视频</a></li>
+                        <li><a href="/case.html">案例</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/coursePlan.html"> <i
+                        class="fa fa-product-hunt"></i> 课程教案
+                </a></li>
+                <li>
+                    <a href="/testExercise.html"> <i
+                            class="fa fa-product-hunt"></i> 测试练习
+                    </a>
+                </li>
+                <li><a
+                        href="/teacherTeam.html">
+                    <i class="fa fa-user"></i> 教师团队
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <nav class="navbar navbar-custom">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>身份：<span th:text="${session.type}" style="color: blue"></span></li>
+                    <li>
+                        <a href="/logOut" class="login_out_bot"> <i class="fa fa-sign-out">退出</i>
+                        </a></li>
+                </ul>
+                <div class="mydivh1">
+                    <h3>课程教案</h3>
+                </div>
+            </nav>
+            &emsp; <div class="findTolike">
+            <form action="/coursePlan.html" method="get">
+                高级查询&emsp;&emsp;
+                名字：<input  name="name" type="text">
+                课程信息：<input  name="msg" type="text">
+                <a><input type="submit" id="selectVIPG" value="查询"></a>&emsp;
+            </form>
+            &emsp;
+        </div>
+        </div>
+
+
+        <div class="body">
+            <div style="height: 400px; width: 1100px">
+                <table class="table table-bordered" id="user-box">
+                    <tr>
+                        <th>序号</th>
+                        <th>名称</th>
+                        <th>讲师姓名</th>
+                        <th>时间</th>
+                        <th>内容</th>
+                    </tr>
+                    <tr th:each="adc : ${adc}">
+                        <td th:text="${adc.id}"></td>
+                        <td th:text="${adc.name}"></td>
+                        <td th:text="${adc.teaName}"></td>
+                        <td th:text="${adc.time}"></td>
+                        <td th:text="${adc.msg}"></td>
+                    </tr>
+                </table>
+
+                <div class="floot">共 <span th:text="${lp.tp}"></span>页
+                    第<span th:text="${lp.cp}"></span>页
+                    <span><a th:href="@{${lp.url}+'&cp=1'}">首頁</a></span>
+                    <span th:if="${lp.cp}>1">
+                        <a th:href="@{${lp.url}+'&cp='+${lp.cp-1}}">上一页</a>
+                    </span>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp-3}}">
+                        <span th:if="${lp.cp-3>=1}" th:text="${lp.cp-3}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp-2}}">
+                        <span th:if="${lp.cp-2>=1}" th:text="${lp.cp-2}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp-1}}">
+                        <span th:if="${lp.cp-1>=1}" th:text="${lp.cp-1}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp}}">
+                        <span th:if="${lp.cp>=1}" th:text="${lp.cp}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp+1}}">
+                        <span th:if="${lp.cp+1<=lp.tp}" th:text="${lp.cp+1}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp+2}}">
+                        <span th:if="${lp.cp+2<=lp.tp}" th:text="${lp.cp+2}"></span>
+                    </a>
+                    <a th:href="@{${lp.url}+'&cp='+${lp.cp+3}}">
+                        <span th:if="${lp.cp+3<=lp.tp}" th:text="${lp.cp+3}"></span>
+                    </a>
+                    <span th:if="${lp.cp<lp.tp}">
+                        <a th:href="@{${lp.url}+'&cp='+${lp.cp+1}}">下一页</a>
+                    </span>
+                    <span>
+                        <a th:href="@{${lp.url}+'&cp='+${lp.tp}}">末頁</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

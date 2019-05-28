@@ -1,0 +1,120 @@
+
+/* 美文欣赏开始 */
+.airtic_hd {
+    width: 100%;
+}
+
+.airtic_hd h4 {
+    margin-bottom: 5px;
+    color:#FF88C2;
+}
+
+.airtic_bd {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+    height: 257px;
+}
+
+.airtic_bd_l {
+    width: 314px;
+    /* font-size: 0; */
+    float: left;
+    margin-right: 33px;
+}
+
+.airtic_bd_l img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.airtic_bd_m {
+    width: 350px;
+    float: left;
+    margin-right: 60px;
+}
+
+.airtic_bd_m_title {
+    height: 37px;
+}
+
+.airtic_bd_m_title a {
+    line-height: 37px;
+    color: #166a74;
+}
+
+.airtic_bd_m_content {
+    width: 350px;
+    height: 220px;
+}
+
+.airtic_bd_m_content li {
+    margin: 5px 0;
+    height: 70px;
+}
+
+.airtic_bd_m_content_pic {
+    width: 65px;
+    float: left;
+    margin-right: 15px;
+}
+
+.airtic_bd_m_content_pic img {
+    display: block;
+    width: 65px;
+}
+
+.airtic_bd_m_content_tit {
+    font-size: 14px;
+    color: #166a74;
+}
+
+.airtic_bd_m_content p {
+    font-size: 12px;
+}
+
+.airtic_bd_r {
+    height: 293px;
+    float: left;
+}
+
+.airtic_bd_r h4 {
+    margin: 15px 0;
+    color: #166a74;
+}
+.airtic_bd_r_content>a {
+    box-sizing: border-box;
+    padding: 10px 0 10px 2px;
+    width: 293px;
+    color: #166a74;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+}
+.given{
+    padding: 15px 0 15px 2px;
+}
+.contribute {
+    color: #166a74;
+    font-size: 14px;
+}
+.two {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+    margin: 0 15px;
+    background-color: #2CA7B0;
+}
+.given a{
+    /* width: 100px; */
+    font-size: 13px;
+    text-decoration: underline;
+    color: #166a74;
+}
+
+/* 美文欣赏结束 */
+
+/* 主体结束 */

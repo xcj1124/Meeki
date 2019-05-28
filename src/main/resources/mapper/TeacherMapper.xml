@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xaau.xcj.Curriculum.resource.management.mapper.TeacherMapper">
+
+    <sql id="TeacherSql">
+        <if test="teacher.name!=null and teacher.name!=''">
+            AND name LIKE concat('%',#{teacher.name},'%')
+        </if>
+        <if test="teacher.phone!=null and teacher.phone!=''">
+            AND phone LIKE concat('%',#{teacher.phone},'%')
+        </if>
+
+    </sql>
+
+
+    <select id="totalTea" resultType="Integer">
+        select count(*) FROM teacher
+        <where>
+            <include refid="TeacherSql"></include>
+        </where>
+    </select>
+    <select id="limitTea" parameterType="Integer" resultType="xaau.xcj.Curriculum.resource.management.entity.Teacher">
+        select * FROM teacher
+        <where>
+            <include refid="TeacherSql"></include>
+        </where>
+        LIMIT #{ns},#{ps}
+    </select>
+</mapper>
