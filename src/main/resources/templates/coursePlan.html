@@ -102,7 +102,7 @@
                         <td th:text="${adc.name}"></td>
                         <td th:text="${adc.teaName}"></td>
                         <td th:text="${adc.time}"></td>
-                        <td><a th:href="@{${adc.msg}}"><span th:text="${adc.name}"></span></a></td>
+                        <td><a th:href="@{${adc.msg}}"><span th:text="${adc.name}+'.docx'"></span></a></td>
                         <td>
                             <a href=""
                                th:onclick="deletePlan([[${adc.id}]])">

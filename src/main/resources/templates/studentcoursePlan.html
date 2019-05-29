@@ -89,14 +89,14 @@
                         <th>名称</th>
                         <th>讲师姓名</th>
                         <th>时间</th>
-                        <th>内容</th>
+                        <th>文件</th>
                     </tr>
                     <tr th:each="adc : ${adc}">
                         <td th:text="${adc.id}"></td>
                         <td th:text="${adc.name}"></td>
                         <td th:text="${adc.teaName}"></td>
                         <td th:text="${adc.time}"></td>
-                        <td th:text="${adc.msg}"></td>
+                        <td><a th:href="@{${adc.msg}}"><span th:text="${adc.name}+'.docx'"></span></a></td>
                     </tr>
                 </table>
 
