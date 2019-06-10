@@ -15,4 +15,5 @@ public interface MessageService {
     public int addMessage(Message message);  //添加课程
     public Message findMes(int id);
     public int updateMes(Message message);
+    public String deleteMsg(int id);
 }

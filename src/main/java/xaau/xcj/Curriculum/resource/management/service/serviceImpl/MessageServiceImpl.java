@@ -42,4 +42,14 @@ public class MessageServiceImpl implements MessageService {
     public int updateMes(Message message) {
         return this.messageMapper.updateMes(message);
     }
+
+    @Override
+    public String deleteMsg(int id) {
+        int row=this.messageMapper.deleteMsg(id);
+        if(row>0){
+            return "ok";
+        }else {
+            return "no";
+        }
+    }
 }

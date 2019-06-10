@@ -1,5 +1,6 @@
 package xaau.xcj.Curriculum.resource.management.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import xaau.xcj.Curriculum.resource.management.entity.Message;
@@ -19,4 +20,6 @@ public interface MessageMapper {
 
     public Message findMes(@Param("id") int id);
     public int updateMes(@Param("ms")Message message);
+    @Delete("delete from message where id=#{id}")
+    public int deleteMsg(@Param("id")int id );
 }

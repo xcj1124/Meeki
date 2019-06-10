@@ -5,6 +5,7 @@ package xaau.xcj.Curriculum.resource.management.entity;
  * @data: 2019/5/8 17:40
  * @message:
  */
+
 public class Board {
         // 管理员的留言
         private int id;

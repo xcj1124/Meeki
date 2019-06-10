@@ -12,26 +12,8 @@
     <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/assets/artTemplate/template-native.js"></script>
     <script src="/static/js/common.js"></script>
-    <script src="/static/js/user.js"></script>
     <script src="/static/js/video.js"></script>
     <script>
-         function sub() {
-     $("#queryForm").ajaxSubmit({
-         type : "POST",
-         url : "${pageContext.request.contextPath }/addVideo",
-         dataType:"json",
-         success:function(date){
-        	 if(date=="ok"){
-        		 alert("上传成功");
-        		 window.location.reload();
-        	 }else{
-        		 alert("上传失败");
-        		 window.location.reload();
-        	 }
-
-         }
-     });
- }
 
  function deleteVid(id){
     if (confirm("确认删除吗？")) {
@@ -241,7 +223,7 @@ function UpdateVid(){
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" id="update_customer_form"
+                <form class="form-horizontal" enctype="multipart/form-data" id="update_customer_form"
                       method="post">
 
                     <div class="form-group">

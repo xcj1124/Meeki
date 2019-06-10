@@ -87,6 +87,10 @@ public class CoureseController {
         }
     }
 
-
+    @RequestMapping("/deleteMsg")
+    @ResponseBody
+    public String deleteMsg(int id){
+        return this.messageService.deleteMsg(id);
+    }
 
 }

@@ -12,8 +12,6 @@
     <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/assets/artTemplate/template-native.js"></script>
     <script src="/static/js/common.js"></script>
-    <script src="/static/js/user.js"></script>
-
     <script type="text/javascript">
 function checkSubmit(){
 $.post("/addMsg",$("#update_customer_form").serialize(),function(msg){
@@ -47,6 +45,21 @@ function updateMes(){
     }
    });
 }
+
+function deleteMsg(id){
+if(confirm("确认删除吗？")){
+    $.post("/deleteMsg",{"id" : id},function(msg){
+    if(msg=="ok"){
+    alert("删除成功");
+    window.location.reload(true);
+    }else{
+    alert("删除失败");
+    window.location.reload(true);
+    }
+    });
+    }
+}
+
 
 </script>
 
@@ -144,6 +157,10 @@ function updateMes(){
                                data-toggle="modal" data-target="#updateCou"
                                data-whatever="@getbootstrap">
                                 <button type="btn btn-primary" th:onclick="findMes([[${msg.id}]])">修改课程信息</button></a>
+                            </a>
+                            <a href=""
+                               th:onclick="deleteMsg([[${msg.id}]])">
+                                <button type="btn btn-primary">删除</button>
                             </a>
                         </div>
                     </ul>

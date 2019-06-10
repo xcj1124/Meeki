@@ -16,6 +16,7 @@ import xaau.xcj.Curriculum.resource.management.unit.FileUtil;
 import xaau.xcj.Curriculum.resource.management.unit.GetUrl;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -85,8 +86,7 @@ public class PlanController {
     }
 
     @RequestMapping("/addPlan")
-    @ResponseBody
-    public String addPlan( @RequestParam("file") MultipartFile file,Plan plan,HttpServletRequest request) throws IOException {
+    public void addPlan(@RequestParam("file") MultipartFile file, Plan plan, HttpServletRequest request, HttpServletResponse response) throws IOException {
         Date date=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
         String time=sdf.format(date);
@@ -103,9 +103,9 @@ public class PlanController {
         plan.setMsg(imgurl);
         int rows=this.planService.addPlan(plan);
         if(rows>0){
-            return "coursePlan.html";
+            response.setHeader("refresh","1;url=coursePlan.html");
         }else{
-            return "no";  //
+            response.setHeader("refresh","1;url=coursePlan.html");
         }
     }
     @RequestMapping("/findP")

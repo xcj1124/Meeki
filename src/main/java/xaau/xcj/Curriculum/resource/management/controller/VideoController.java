@@ -77,7 +77,7 @@ public class VideoController {
         String url = request.getSession().getServletContext()
                 .getRealPath("/image");
         // 以绝对路径保存重名命后的视频
-
+        coureseMsg.setUrl("/static/video/1_1.ogv");
         int rows=this.videoService.addVideo(coureseMsg);
         if(rows>0){
             return "ok";
