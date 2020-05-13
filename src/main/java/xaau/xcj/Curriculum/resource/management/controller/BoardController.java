@@ -70,6 +70,7 @@ public class BoardController {
                 .getId();
         Board board = new Board(); // 留言内容
         // 时间
+        System.out.println("----------------->"+id);
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);

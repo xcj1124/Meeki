@@ -6,7 +6,6 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,11 +14,13 @@ import xaau.xcj.Curriculum.resource.management.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
- * @auther: Meeki
- * @data: 2019/3/12 11:18
- * @message:配置mvc
- */
+ * @program: Blog
+ * @description:
+ * @author: Mr.Xie
+ * @create: 2020-05-13 22:03
+ **/
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
