@@ -88,7 +88,7 @@
             <div >
 
                 <div th:each="cose,cs:${cose}" th:class="${cs.odd}?'odd':'even'">
-                    <span th:text="${cs.count}"></span>.<span th:text="${cose.topic}"></span>&emsp;&emsp;
+                        <span th:text="${cs.count}"></span>.<span th:text="${cose.topic}"></span>&emsp;&emsp;
                     <span class="correctAnser" th:text="${cose.correctAnser}"></span>&emsp;&emsp;&emsp;&emsp;
 
                     <a href=""

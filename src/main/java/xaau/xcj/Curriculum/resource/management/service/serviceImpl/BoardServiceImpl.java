@@ -17,6 +17,7 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
     @Autowired
     private BoardMapper boardMapper;
+
     @Override
     public int addConsume(Board board) {
         return this.boardMapper.addConsume(board);

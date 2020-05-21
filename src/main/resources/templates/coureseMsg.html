@@ -13,55 +13,56 @@
     <script src="/static/assets/artTemplate/template-native.js"></script>
     <script src="/static/js/common.js"></script>
     <script type="text/javascript">
-function checkSubmit(){
-$.post("/addMsg",$("#update_customer_form").serialize(),function(msg){
-if (msg == "ok") {
-alert("添加成功");
-    window.location.reload();
- } else {
-    window.location.reload();
-    }});
-}
+        function checkSubmit() {
+            $.post("/addMsg", $("#update_customer_form").serialize(), function (msg) {
+                if (msg == "ok") {
+                    alert("添加成功");
+                    window.location.reload();
+                } else {
+                    window.location.reload();
+                }
+            });
+        }
 
-function findMes(id){
-    $.post("/findMes",{"id":id},function(msg){
-        $("#id1").val(msg.id);
-        $("#name1").val(msg.name);
-        $("#teaName1").val(msg.teaName);
-        $("#time1").val(msg.time);
-        $("#msg1").val(msg.msg);
-        $("#zhangjie1").val(msg.zhangjie);
-    })
-}
+        function findMes(id) {
+            $.post("/findMes", {"id": id}, function (msg) {
+                $("#id1").val(msg.id);
+                $("#name1").val(msg.name);
+                $("#teaName1").val(msg.teaName);
+                $("#time1").val(msg.time);
+                $("#msg1").val(msg.msg);
+                $("#zhangjie1").val(msg.zhangjie);
+            })
+        }
 
-function updateMes(){
-   $.post("/updateMes",$("#update").serialize(),function(date){
-        if(date=="ok"){
-    alert("修改成功");
-    window.location.reload();
-    }else{
-    alert("修改失败");
-        window.location.reload();
-    }
-   });
-}
+        function updateMes() {
+            $.post("/updateMes", $("#update").serialize(), function (date) {
+                if (date == "ok") {
+                    alert("修改成功");
+                    window.location.reload();
+                } else {
+                    alert("修改失败");
+                    window.location.reload();
+                }
+            });
+        }
 
-function deleteMsg(id){
-if(confirm("确认删除吗？")){
-    $.post("/deleteMsg",{"id" : id},function(msg){
-    if(msg=="ok"){
-    alert("删除成功");
-    window.location.reload(true);
-    }else{
-    alert("删除失败");
-    window.location.reload(true);
-    }
-    });
-    }
-}
+        function deleteMsg(id) {
+            if (confirm("确认删除吗？")) {
+                $.post("/deleteMsg", {"id": id}, function (msg) {
+                    if (msg == "ok") {
+                        alert("删除成功");
+                        window.location.reload(true);
+                    } else {
+                        alert("删除失败");
+                        window.location.reload(true);
+                    }
+                });
+            }
+        }
 
 
-</script>
+    </script>
 
 
 </head>
@@ -121,23 +122,26 @@ if(confirm("确认删除吗？")){
                 </div>
             </nav>
 
-            &emsp; <div class="findTolike">
-            <form action="/coureseMsg.html" method="get">
-                高级查询&emsp;&emsp;名字：<input  name="name" type="text">
-                <input type="submit" id="selectMsg" value="查询"></a>&emsp;
-                <a href=""
-                   data-toggle="modal" data-target="#addCou"
-                   data-whatever="@getbootstrap"><button type="btn btn-primary">添加课程</button></a>
-                </a>
-            </form>
             &emsp;
-        </div>
+            <div class="findTolike">
+                <form action="/coureseMsg.html" method="get">
+                    高级查询&emsp;&emsp;名字：<input name="name" type="text">
+                    <input type="submit" id="selectMsg" value="查询"></a>&emsp;
+                    <a href=""
+                       data-toggle="modal" data-target="#addCou"
+                       data-whatever="@getbootstrap">
+                        <button type="btn btn-primary">添加课程</button>
+                    </a>
+                    </a>
+                </form>
+                &emsp;
+            </div>
 
         </div>
-        <div class="body"style="height: 460px; width: 1050px">
+        <div class="body" style="height: 460px; width: 1050px">
 
             <div>
-               <!--课程封面-->
+                <!--课程封面-->
                 <div class="fengmian" th:each="msg : ${msg}">
                     <img th:src="@{${msg.img}}">
                 </div>
@@ -156,7 +160,8 @@ if(confirm("确认删除吗？")){
                             <a href=""
                                data-toggle="modal" data-target="#updateCou"
                                data-whatever="@getbootstrap">
-                                <button type="btn btn-primary" th:onclick="findMes([[${msg.id}]])">修改课程信息</button></a>
+                                <button type="btn btn-primary" th:onclick="findMes([[${msg.id}]])">修改课程信息</button>
+                            </a>
                             </a>
                             <a href=""
                                th:onclick="deleteMsg([[${msg.id}]])">
@@ -205,14 +210,10 @@ if(confirm("确认删除吗？")){
             </div>
 
 
-
         </div>
 
 
-
-
-
-</div>
+    </div>
 </div>
 
 
@@ -233,7 +234,7 @@ if(confirm("确认删除吗？")){
             <div class="modal-body">
 
                 <form class="form-horizontal" id="update_customer_form"
-                      method="post"  enctype="multipart/form-data">
+                      method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="message-text" class="control-label">课程名字：</label> <input
@@ -261,9 +262,11 @@ if(confirm("确认删除吗？")){
             </div>
             <div class="modal-footer">
                 <button type="button" id="submitBtn" onclick="checkSubmit()">
-                    添加</button>
+                    添加
+                </button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    关闭</button>
+                    关闭
+                </button>
             </div>
         </div>
     </div>
@@ -284,7 +287,7 @@ if(confirm("确认删除吗？")){
             <div class="modal-body">
 
                 <form class="form-horizontal" id="update"
-                      method="post"  enctype="multipart/form-data">
+                      method="post" enctype="multipart/form-data">
 
                     <input type="hidden" id="id1" name="id">
                     <div class="form-group">
@@ -313,9 +316,11 @@ if(confirm("确认删除吗？")){
             </div>
             <div class="modal-footer">
                 <button type="button" id="ssss" class="btn btn-primary" onclick="updateMes()">
-                    修改</button>
+                    修改
+                </button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    关闭</button>
+                    关闭
+                </button>
             </div>
         </div>
     </div>
